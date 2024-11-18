@@ -1,8 +1,11 @@
 package com.ecommerce.order.order;
 
 import jakarta.validation.Valid;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,5 +20,14 @@ public class OrderController {
     @PostMapping
     public ResponseEntity<Integer> createOrder(@Valid @RequestBody OrderRequest orderRequest){
         return ResponseEntity.ok(orderService.createOrder(orderRequest));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<OrderResponse>> findAll(){
+        return ResponseEntity.ok(orderService.findAll());
+    }
+    @GetMapping("/{order-id}")
+    public ResponseEntity<OrderResponse> findById(@PathVariable("order-id") Integer orderId){
+        return ResponseEntity.ok(orderService.findById(orderId));
     }
 }
