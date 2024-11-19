@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Order Confirmation</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f9f9f9; text-align: center;">
+<div style="max-width: 800px; margin: 50px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+  <h1 style="color: #007bff; padding: 20px 0; border-bottom: 2px solid #f0f0f0;">Order Confirmation</h1>
+  <p style="font-size: 18px; color: #333; padding: 20px;">
+    Thank you for your order, <span style="font-weight: bold;" th:text="${customerName}">[Customer Name]</span>!
+  </p>
+  <p style="font-size: 16px; color: #555;">
+    Your order <span style="font-weight: bold;" th:text="${orderReference}">[Order Reference]</span> has been successfully placed.
+  </p>
+
+  <!-- Table of Products -->
+  <table style="width: 90%; margin: 20px auto; border-collapse: collapse; text-align: left;">
+    <thead>
+    <tr style="background-color: #007bff; color: #ffffff;">
+      <th style="padding: 10px; border: 1px solid #ddd;">Name</th>
+      <th style="padding: 10px; border: 1px solid #ddd;">Quantity</th>
+      <th style="padding: 10px; border: 1px solid #ddd;">Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+      <td style="padding: 10px; border: 1px solid #ddd;" th:text="${product.name}">[Product Name]</td>
+      <td style="padding: 10px; border: 1px solid #ddd;" th:text="${product.quantity}">[Quantity]</td>
+      <td style="padding: 10px; border: 1px solid #ddd;" th:text="${product.price}">[Price]</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p style="font-size: 16px; color: #333; font-weight: bold; padding: 20px;">
+    Total Amount: <span style="color: #28a745;" th:text="${totalAmount}">$[Total Amount]</span>
+  </p>
+
+  <a href="/" style="display: inline-block; margin: 20px; padding: 10px 20px; background-color: #007bff; color: #ffffff; text-decoration: none; border-radius: 4px;">
+    Go to Home
+  </a>
+</div>
+</body>
+</html>

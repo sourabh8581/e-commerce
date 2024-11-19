@@ -12,6 +12,7 @@
         <module name="product" />
         <module name="payment" />
         <module name="configserver" />
+        <module name="gateway" />
         <module name="customer" />
         <module name="order" />
       </profile>
@@ -22,6 +23,7 @@
       <module name="configserver" options="-parameters" />
       <module name="customer" options="-parameters" />
       <module name="eurekaserver" options="-parameters" />
+      <module name="gateway" options="-parameters" />
       <module name="notification" options="-parameters" />
       <module name="order" options="-parameters" />
       <module name="payment" options="-parameters" />
