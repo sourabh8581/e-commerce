@@ -39,19 +39,19 @@ public class OrderService {
 //        purchase product -->> product microservice --> RestTemplate
     List<PurchaseResponse> purchasedProducts = this.productClient.purchaseProducts(
         orderRequest.products());
+
 //        persist order
     Order order = this.orderRepository.save(orderMapper.toOrder(orderRequest));
 
 //        persist order lines
-    for(PurchaseRequest purchaseRequest:orderRequest.products()){
-      orderlineService.saveOrderLine(
-          new OrderLineRequest(
-              null,
-              order.getId(),
-              purchaseRequest.productId(),
-              purchaseRequest.quantity()
-          )
+    for (PurchaseRequest purchaseRequest : orderRequest.products()) {
+      OrderLineRequest orderLineRequest = new OrderLineRequest(
+          null,
+          order.getId(),
+          purchaseRequest.productId(),
+          purchaseRequest.quantity()
       );
+      orderlineService.saveOrderLine(orderLineRequest);
     }
 //        todo:start payment process
     PaymentRequest paymentRequest = new PaymentRequest(orderRequest.amount(),

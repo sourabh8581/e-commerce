@@ -32,7 +32,7 @@ public class CustomerController {
         return ResponseEntity.ok(service.existById(customerId));
     }
     @GetMapping("/{customer-id}")
-    public ResponseEntity<CustomerResponse> findCustomer(@PathVariable String customerId){
+    public ResponseEntity<CustomerResponse> findCustomer(@PathVariable("customer-id") String customerId){
         return ResponseEntity.ok(service.findById(customerId));
     }
     @DeleteMapping("/{customer-id}")

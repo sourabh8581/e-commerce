@@ -16,7 +16,7 @@ import java.util.Map;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(ProductPurchaseException.class)
-    public ResponseEntity<String> handleCustomerNotFoundException(ProductPurchaseException exception) {
+    public ResponseEntity<String> handleInsuffucientQuantityException(ProductPurchaseException exception) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(exception.getMessage());
